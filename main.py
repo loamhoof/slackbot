@@ -2,6 +2,7 @@
 
 import command.api as api
 from slackbot.bot.command import CommandBot
+from slackbot.bot.response import ResponseBot
 from slackbot.bot.useremoji import UserEmojiBot
 from slackbot.bot.wordemoji import WordEmojiBot
 from slackbot.client import run
@@ -19,7 +20,8 @@ def main():
             & WordEmojiBot(word='dude', emoji='feelsgood')
             & WordEmojiBot(word='cow', emoji='cow')
             & (WordEmojiBot(word='airplane', emoji='airplane') | WordEmojiBot(word='superman', emoji='airplane'))
-            & (UserEmojiBot(user=MY_ID, emoji=None) > WordEmojiBot(word='cake', emoji='hungry')))
+            & (UserEmojiBot(user=MY_ID, emoji=None) > WordEmojiBot(word='cake', emoji='hungry'))
+            & ResponseBot(word='doge', response='wow'))
     run(token=TOKEN, bot=bot)
 
 

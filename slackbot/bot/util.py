@@ -19,3 +19,11 @@ def text_startswith(message, regex):
 
 def from_user(message, user):
     return 'user' in message and message['user'] == user
+
+
+def is_snippet(message):
+    return 'file' in message and message['file'].get('mode') == 'snippet'
+
+
+def snippet_title_contains(message, word):
+    return re.search(r'\b%s\b' % word, message['file']['title'], re.I) is not None
